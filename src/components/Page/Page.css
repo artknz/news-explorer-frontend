@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  position: relative;
+  font-family: 'Inter', 'Roboto', 'Roboto Slab', 'Source Sans Pro';
+  text-rendering: optimizeLegibility;
+  min-width: 300px;
+  min-height: 100vh;
+}
+
+* {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: green;
+}

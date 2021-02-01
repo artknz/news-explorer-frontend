@@ -1,13 +1,14 @@
 .header {
-  max-width: 1440px;
+  min-width: 1440px;
   margin: auto;
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
 }
 
 .header__container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  
+  min-height: 80px;
 }
 
 .header__title {
@@ -16,4 +17,5 @@
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
+  color: #FFFFFF;
 }
