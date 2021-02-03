@@ -1,0 +1,40 @@
+.news-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-list__title {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1A1B22;
+  min-width: 1232px;
+  margin: 80px auto 0;
+}
+
+.news-list__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 16px;
+  max-width: 1232px;
+  margin: 64px auto 0;
+  min-height: 50vh;
+}
+
+.news-list__submit-button {
+  background: #FFFFFF;
+  border-radius: 80px;
+  border: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+  min-width: 288px;
+  min-height: 64px;
+  margin: 64px auto 80px;
+  cursor: pointer;
+}
