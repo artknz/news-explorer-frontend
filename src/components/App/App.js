@@ -3,6 +3,7 @@ import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import Main from '../Main/Main';
 import About from '../About/About';
+import Footer from '../Footer/Footer';
 
 const App = () => {
 
@@ -11,6 +12,7 @@ const App = () => {
       <SearchForm />
       <Main />
       <About />
+      <Footer />
     </div>
   );
 }
