@@ -1,0 +1,22 @@
+.navigation__main_saved-news {
+  color: #1A1B22;
+}
+
+.navigation__main_saved-news:visited {
+  color: #1A1B22;
+}
+
+.navigation__saved-news_saved-news {
+  color: #1A1B22;
+}
+
+.navigation__saved-news_saved-news:visited {
+  color: #1A1B22;
+}
+
+.navigation__login_saved-news {
+  color: #1A1B22;
+  border: 1px solid #1A1B22;
+  box-sizing: border-box;
+  border-radius: 100px;
+}

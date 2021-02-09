@@ -1,10 +1,12 @@
 .news-card {
   position: relative;
   max-width: 400px;
-  min-height: 576px;
+  max-height: 576px;
+  width: 100%;
   background: #FFFFFF;
   border-radius: 20px;
   overflow: hidden;
+  margin-top: 16px;
 }
 
 .news-card__image {
@@ -73,7 +75,6 @@
   color: #B6BCBF;
   margin-bottom: 24px;
   margin-left: 24px;
-  margin-right: 24px;
 }
 
 

@@ -73,11 +73,7 @@
   border: none;
   box-sizing: border-box;
   background-color: transparent;
-  margin-right: 24px;
+  margin-right: 104px;
   cursor: pointer;
   padding: 0;
 }
-
-/* .footer__fb:focus {
-  outline: none;
-} */
