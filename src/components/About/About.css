@@ -18,9 +18,9 @@
   margin: 80px 58px 80px 104px;
 }
 
-.about__author {
+/* .about__author {
 
-}
+} */
 
 .about__title {
   font-family: Roboto Slab;
@@ -41,4 +41,25 @@
   color: #1A1B22;
   max-width: 600px;
   margin: 24px auto 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .about__photo {
+    max-width: 232px;
+    max-height: 232px;
+    min-height: 232px;
+    margin: 61px 32px 61px 40px;
+  }
+
+  .about__title {
+    max-width: 424px;
+    width: 100%;
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 40px;
+  }
+
+  .about__text-paragraph {
+    max-width: 424px;
+  }
 }

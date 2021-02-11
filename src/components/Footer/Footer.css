@@ -77,3 +77,29 @@
   cursor: pointer;
   padding: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .footer {
+    max-width: 690px;
+    min-height: 64px;
+  }
+
+  .footer__powered-by {
+    max-width: 300px;
+    min-height: 22px;
+    margin-left: 0;
+  }
+
+  .footer__links {
+    max-width: 264px;
+    margin-right: 24px;
+  }
+
+  .footer__github {
+    margin-left: 24px;
+  }
+
+  .footer__fb {
+    margin-right: 0;
+  }
+}

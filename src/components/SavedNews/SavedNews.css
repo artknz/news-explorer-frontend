@@ -34,3 +34,9 @@
   max-width: 712px;
   margin-top: 30px;
 }
+
+@media screen and (max-width: 768px) {
+  .saved-news__text {
+    max-width: 690px;
+  }
+}

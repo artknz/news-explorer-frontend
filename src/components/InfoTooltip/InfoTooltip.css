@@ -1,0 +1,13 @@
+.popup__alt_type_tooltip {
+  text-align: start;
+  margin: 0;
+}
+
+.popup__route_type_tooltip {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #2F71E5;
+}

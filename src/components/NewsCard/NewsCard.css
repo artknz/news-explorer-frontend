@@ -77,4 +77,30 @@
   margin-left: 24px;
 }
 
+@media screen and (max-width: 768px) {
+  .news-card {
+    max-width: 224px;
+    min-height: 420px;
+  }
 
+  .news-card__image {
+    max-width: 224px;
+    min-height: 150px;
+  }
+
+  .news-card__save {
+    top: 8px;
+    right: 8px;
+  }
+
+  .news-card__title {
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .news-card__text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 90px;
+  }
+}

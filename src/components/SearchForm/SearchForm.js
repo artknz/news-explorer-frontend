@@ -2,10 +2,12 @@ import React from 'react';
 import './SearchForm.css';
 import Header from '../Header/Header';
 
-export default function SearchForm() {
+export default function SearchForm({onAuthClick}) {
   return (
     <div className="search-form">
-      <Header />
+      <Header
+        onAuthClick={onAuthClick}
+      />
       <div className="search-form__container">
         <h1 className="search-form__title">Что творится в мире?</h1>
         <p className="serach-form__caption">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>

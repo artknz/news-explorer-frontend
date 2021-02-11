@@ -1,17 +1,13 @@
 import React from 'react';
 import './Navigation.css';
-import { Route, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-export default function Navigation({name}) {
+export default function Navigation({name, onAuthClick}) {
   return(
     <div className="navigation">
-      <Route path="/">
-        <Link to="/" className={`navigation__main navigation__main_${name}`}>Главная</Link>
-      </Route>
-      <Route path="/">
-        <Link to="/saved-news" className={`navigation__saved-news navigation__saved-news_${name}`}>Сохранённые статьи</Link>
-      </Route>
-      <button className={`navigation__login navigation__login_${name}`}>Авторизоваться</button>
+      <NavLink exact to="/" activeClassName="navigation__active" className={`navigation__main navigation__main_${name}`}>Главная</NavLink>
+      <NavLink to="/saved-news" activeClassName="navigation__active-black" className={`navigation__saved-news navigation__saved-news_${name}`}>Сохранённые статьи</NavLink>
+      <button onClick={onAuthClick} className={`navigation__login navigation__login_${name}`}>Авторизоваться</button>
     </div>
   );
 };
