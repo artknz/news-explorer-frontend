@@ -45,7 +45,6 @@
   background: #FFFFFF;
   border: 1px solid #D1D2D6;
   box-sizing: border-box;
-  /* backdrop-filter: blur(8px); */
   border-radius: 100px;
   margin-top: 64px;
 }
@@ -123,5 +122,50 @@
   .search-form__submit-button {
     max-width: 160px;
     min-height: 56px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .search-form {
+    min-height: 536px;
+  }
+
+  .search-form__container {
+    max-width: 285px;
+    margin: auto;
+  }
+
+  .search-form__title {
+    max-width: 285px;
+  }
+
+  .serach-form__caption {
+    margin-top: 16px;
+  }
+
+  .search-form__bar {
+    min-height: 128px;
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  .search-form__type-line {
+    max-width: 288px;
+    width:100%;
+    min-height: 56px;
+    background: #FFFFFF;
+    border: 1px solid #D1D2D6;
+    box-sizing: border-box;
+    border-radius: 100px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 16px;
+  }
+
+  .search-form__submit-button {
+    max-width: 288px;
+    width: 100%;
+    margin-top: 16px;
   }
 }

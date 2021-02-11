@@ -3,6 +3,7 @@
   background: rgba(196, 196, 196, 0.01);
   max-width: 1440px;
   width: 100%;
+  margin: auto;
   box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
 }
 
@@ -44,5 +45,12 @@
   .header__container {
     max-width: 690px;
   }
+}
 
+@media screen and (max-width: 570px) {
+  .header__title {
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 16px;
+  }
 }

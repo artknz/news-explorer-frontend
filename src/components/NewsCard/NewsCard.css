@@ -104,3 +104,20 @@
     height: 90px;
   }
 }
+
+@media screen and (max-width: 570px) {
+  .news-card {
+    max-width: 288px;
+    min-height: 440px;
+  }
+
+  .news-card__image {
+    max-width: 288px;
+    min-height: 196px;
+  }
+
+  .news-card__save {
+    top: 16px;
+    right: 16px;
+  }
+}

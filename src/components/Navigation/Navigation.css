@@ -72,3 +72,29 @@
     font-size: 16px;
   }
 }
+
+@media screen and (max-width: 570px) {
+  .navigation {
+    display: none;
+  }
+
+  .navigation__main {
+    line-height: 56px;
+    margin: auto;
+    max-width: 288px;
+    width: 100%;
+  }
+
+  .navigation__saved-news {
+    line-height: 56px;
+    margin: auto;
+    max-width: 288px;
+    width: 100%;
+  }
+
+  .navigation__login {
+    margin: auto;
+    max-width: 288px;
+    width: 100%;
+  }
+}

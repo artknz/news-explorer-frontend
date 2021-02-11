@@ -63,3 +63,28 @@
     max-width: 424px;
   }
 }
+
+@media screen and (max-width: 570px) {
+  .about {
+    flex-direction: column;
+  }
+
+  .about__photo {
+    max-width: 272px;
+    max-height: 272px;
+    min-height: 272px;
+    margin: 32px auto 0;
+  }
+
+  .about__author {
+    max-width: 288px;
+    width: 100%;
+    margin: auto;
+    padding-bottom: 80px;
+  }
+
+  .about__title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}

@@ -63,3 +63,17 @@
     max-width: 240px;
   }
 }
+
+@media screen and (max-width: 570px) {
+  .news-list__title {
+    max-width: 288px;
+  }
+
+  .news-list__cards {
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+    grid-gap: 10px;
+    margin: 24px auto 0;
+    max-width: 288px;
+    width: 100%;
+  }
+}

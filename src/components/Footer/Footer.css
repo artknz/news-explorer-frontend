@@ -103,3 +103,49 @@
     margin-right: 0;
   }
 }
+
+@media screen and (max-width: 570px) {
+  .footer {
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    min-height: 176px;
+  }
+
+  .footer__links {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-top: 20px;
+  }
+
+  .footer__main {
+    max-width: 200px;
+    width: 100%;
+    line-height: 48px;
+    text-align: left;
+  }
+
+  .footer__yp {
+    line-height: 48px;
+    text-align: left;
+  }
+
+  .footer__powered-by {
+    position: absolute;
+    bottom: 22px;
+  }
+
+  .footer__github {
+    position: absolute;
+    top: 20px;
+    right: 64px;
+  }
+
+  .footer__fb {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+  }
+}
