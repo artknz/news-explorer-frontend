@@ -80,6 +80,15 @@
   line-height: 24px;
   color: #FFFFFF;
   box-sizing: border-box;
+  outline: none;
+}
+
+.search-form__submit-button:hover {
+  background: #347EFF;
+}
+
+.search-form__submit-button:active {
+  background: #2A65CC;
 }
 
 @media screen and (max-width: 768px) {
