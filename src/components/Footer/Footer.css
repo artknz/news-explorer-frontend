@@ -1,0 +1,151 @@
+.footer {
+  min-height: 80px;
+  max-width: 1440px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__powered-by {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #B6BCBF;
+  margin-left: 104px;
+}
+
+.footer__links {
+  margin-left: auto;
+  display: flex;
+  margin-right: 40px;
+}
+
+.footer__main {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #1A1B22;
+  text-decoration: none;
+  min-width: 112px;
+  text-align: center;
+}
+
+.footer__main:visited {
+  color: #1A1B22;
+}
+
+.footer__yp {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #1A1B22;
+  text-decoration: none;
+  min-width: 192px;
+}
+
+.footer__yp:visited {
+  color: #1A1B22;
+}
+
+.footer__github {
+  min-width: 24px;
+  min-height: 24px;
+  border: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  margin-right: 24px;
+  cursor: pointer;
+}
+
+.footer__fb {
+  min-width: 24px;
+  min-height: 24px;
+  border: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  margin-right: 104px;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    max-width: 690px;
+    min-height: 64px;
+  }
+
+  .footer__powered-by {
+    max-width: 300px;
+    min-height: 22px;
+    margin-left: 0;
+  }
+
+  .footer__links {
+    max-width: 264px;
+    margin-right: 24px;
+  }
+
+  .footer__github {
+    margin-left: 24px;
+  }
+
+  .footer__fb {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .footer {
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    min-height: 176px;
+  }
+
+  .footer__links {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-top: 20px;
+  }
+
+  .footer__main {
+    max-width: 200px;
+    width: 100%;
+    line-height: 48px;
+    text-align: left;
+  }
+
+  .footer__yp {
+    line-height: 48px;
+    text-align: left;
+  }
+
+  .footer__powered-by {
+    position: absolute;
+    bottom: 22px;
+  }
+
+  .footer__github {
+    position: absolute;
+    top: 20px;
+    right: 64px;
+  }
+
+  .footer__fb {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+  }
+}
