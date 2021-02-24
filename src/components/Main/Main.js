@@ -2,10 +2,12 @@ import React from 'react';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import './Main.css';
 
-export default function Main() {
+export default function Main({ cards }) {
   return (
     <div className="main">
-      <NewsCardList />
+      <NewsCardList
+        cards={cards}
+      />
     </div>
   );
 };

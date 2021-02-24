@@ -12,17 +12,17 @@ export default function PopupRegister({name, isOpen, onClose}) {
       onClose={onClose}
       isOpen={isOpen}
     >
-      <h4 className="popup__field-name">Email</h4>
-      <input id="title-input" type="text" value={name} onChange={''} placeholder="Введите почту" name="name" minLength="1" maxLength="30" className="popup__field popup__field_type_title" required />
+      {/* <h4 className="popup__field-name">Email</h4>
+      <input id="register-email" type="text" value={name} onChange={''} placeholder="Введите почту" name="name" minLength="1" maxLength="30" className="popup__field popup__field_type_title" required />
       <span id="title-input-error" className="popup__field-error" />
 
       <h4 className="popup__field-name">Пароль</h4>
-      <input id="link-input" type="url" value={''} onChange={''} placeholder="Введите пароль" name="link" className="popup__field popup__field_type_link" required />
+      <input id="register-password" type="url" value={''} onChange={''} placeholder="Введите пароль" name="link" className="popup__field popup__field_type_link" required />
       <span id="link-input-error" className="popup__field-error" />
 
       <h4 className="popup__field-name">Имя</h4>
-      <input id="name-input" type="url" value={''} onChange={''} placeholder="Введите свое имя" name="link" className="popup__field popup__field_type_link" required />
-      <span id="name-input-error" className="popup__field-error" />
+      <input id="register-name" type="url" value={''} onChange={''} placeholder="Введите свое имя" name="link" className="popup__field popup__field_type_link" required />
+      <span id="name-input-error" className="popup__field-error" /> */}
     </PopupWithForm>
   );
 };

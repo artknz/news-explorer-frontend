@@ -55,7 +55,6 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 22px;
-  color: #B6BCBF;
   margin-left: 24px;
   border: none;
   max-width: 376px;
@@ -81,6 +80,7 @@
   color: #FFFFFF;
   box-sizing: border-box;
   outline: none;
+  cursor: pointer;
 }
 
 .search-form__submit-button:hover {

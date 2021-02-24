@@ -9,7 +9,7 @@ export default function Header({name, onAuthClick, onClose}) {
     <header className="header">
       <div className="header__container">
         <Route exact path="/">
-          <Link className={`header__title header__title_${name}`}>NewsExplorer</Link>
+          <Link to="/" className={`header__title header__title_${name}`}>NewsExplorer</Link>
         </Route>
         <Navigation
           onAuthClick={onAuthClick}

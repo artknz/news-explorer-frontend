@@ -13,6 +13,10 @@
 .news-card__image {
   max-width: 400px;
   min-height: 272px;
+  max-height: 272px;
+  background-position: center center;
+  object-fit: cover;
+  width: 100%;
 }
 
 .news-card_flag {
@@ -70,6 +74,7 @@
   font-weight: normal;
   font-size: 26px;
   line-height: 30px;
+  min-height: 60px;
   color: #1A1B22;
   margin-left: 24px;
   margin-top: 12px;
