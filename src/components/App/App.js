@@ -12,30 +12,44 @@ import newsApi from '../../utils/NewsApi';
 import mainApi from '../../utils/MainApi';
 import Preloader from '../Preloader/Preloader';
 import NotFound from '../NotFound/NotFound';
+import * as auth from '../../utils/Auth';
 
 function App() {
   const[ isPopupAuthOpen, setIsPopupAuthOpen ] = useState(false);
   const[ isPopupRegisterOpen, setIsPopupRegisterOpen ] = useState(false);
+  const[ isInfoToolTipOpen, setInfoToolTipOpen ] = useState(false);
   const[ isLoading, setIsLoading ] = useState(false);
 
   const localCards = JSON.parse(localStorage.getItem('localCards'));
   const[ cards, setCards ] = useState(localCards);
 
   const [ articles, setArticles] = useState(null);
-
+  const[ loggedIn, setLoggedIn ] = useState(false);
+  const[ userData, setUserData ] = useState({
+    name: ''
+  });
+  
   const history = useHistory();
 
   function handleAuthClick() {
     setIsPopupAuthOpen(true);
   }
 
+  function handleAuthClick() {
+    setIsPopupAuthOpen(true);
+    setIsPopupRegisterOpen(false);
+    setInfoToolTipOpen(false);
+  }
+
   function handleRegisterClick() {
     setIsPopupRegisterOpen(true);
+    setIsPopupAuthOpen(false);
   }
 
   function closeAllPopups() {
     setIsPopupAuthOpen(false);
     setIsPopupRegisterOpen(false);
+    setInfoToolTipOpen(false);
   }
 
   const defineContent = (cards, isLoading) => {
@@ -86,7 +100,6 @@ function App() {
       })
   }
 
-
   useEffect(_ => {
     function getArticles() {
       mainApi.getArticles().then(
@@ -97,6 +110,37 @@ function App() {
     }
     getArticles();
   }, [])
+
+  const handleRegister = (email, password, name) => {
+    auth.register(email, password, name)
+      .then(data => {
+        setUserData({
+          email: data.email,
+          password: data.password,
+          name: data.name
+        });
+        history.push('/');
+      })
+      .then(res => {
+        setIsPopupRegisterOpen(false);
+        setInfoToolTipOpen(true);
+      })
+      .catch((err) => console.log(err))
+  }
+
+  const handleLogin = (email, password) => {
+    auth.authorize(email, password)
+    .then(data => {
+      console.log(data.token)
+      localStorage.setItem('jwt', data.token)
+      setLoggedIn(true);
+      history.push('/');
+    })
+    .then(res => {
+      setIsPopupAuthOpen(false);
+    })
+    .catch((err) => console.log(err))
+  }
 
   return (
     <div className="App">
@@ -119,12 +163,19 @@ function App() {
         isOpen={isPopupAuthOpen}
         onClose={closeAllPopups}
         onRegisterClick={handleRegisterClick}
+        handleLogin={handleLogin}
       />
       <PopupRegister
         isOpen={isPopupRegisterOpen}
         onClose={closeAllPopups}
+        handleRegister={handleRegister}
+        onAuthClick={handleAuthClick}
       />
-      <InfoTooltip />
+      <InfoTooltip
+        isOpen={isInfoToolTipOpen}
+        onClose={closeAllPopups}
+        onAuthClick={handleAuthClick}
+      />
     </div>
   );
 }
