@@ -35,6 +35,16 @@
   margin-top: 30px;
 }
 
+.saved-articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 16px;
+  max-width: 1232px;
+  width: 100%;
+  margin: 64px auto 0;
+  background: #F5F6F7;
+}
+
 @media screen and (max-width: 768px) {
   .saved-news__text {
     max-width: 690px;
