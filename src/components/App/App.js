@@ -13,6 +13,8 @@ import mainApi from '../../utils/MainApi';
 import Preloader from '../Preloader/Preloader';
 import NotFound from '../NotFound/NotFound';
 import * as auth from '../../utils/Auth';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
   const[ isPopupAuthOpen, setIsPopupAuthOpen ] = useState(false);
@@ -22,13 +24,14 @@ function App() {
 
   const localCards = JSON.parse(localStorage.getItem('localCards'));
   const[ cards, setCards ] = useState(localCards);
+  const[currentUser, setCurrentUser] = useState(CurrentUserContext);
 
-  const [ articles, setArticles] = useState(null);
+  const[ articles, setArticles] = useState(null);
   const[ loggedIn, setLoggedIn ] = useState(false);
   const[ userData, setUserData ] = useState({
     name: ''
   });
-  
+
   const history = useHistory();
 
   function handleAuthClick() {
@@ -101,15 +104,29 @@ function App() {
   }
 
   useEffect(_ => {
-    function getArticles() {
-      mainApi.getArticles().then(
-        (data) => {
-          setArticles(data)
-        }
-      )
+    if(loggedIn) {
+      function getArticles() {
+        mainApi.getArticles().then(
+          (data) => {
+            setArticles(data)
+          })
+      }
+      getArticles();
+      const jwt = localStorage.getItem('jwt')
+      mainApi.getUserInfo()
+        .then(data => {
+          setCurrentUser(data)
+        })
+        .catch((err) => console.log(err))
+
+      auth.getContent(jwt).then((res) => {
+        setUserData({
+          name: res.name,
+        });
+      })
+      .catch(err => console.log(err))
     }
-    getArticles();
-  }, [])
+  }, [loggedIn]);
 
   const handleRegister = (email, password, name) => {
     auth.register(email, password, name)
@@ -142,21 +159,41 @@ function App() {
     .catch((err) => console.log(err))
   }
 
+  const tokenCheck = () => {
+    const jwt = localStorage.getItem('jwt')
+    if (jwt) {
+      auth.getContent(jwt).then((res) => {
+        if (res.email) {
+          setLoggedIn(true);
+          history.push('/');
+        }
+      })
+      .catch(err => console.log(err))
+    }
+  }
+
   return (
-    <div className="App">
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="App">
       <Switch>
         <Route exact path="/">
           <SearchForm
             onAuthClick={handleAuthClick}
             searchArticles={searchArticles}
+            userData={userData}
+            loggedIn={loggedIn}
           />
           {defineContent(cards, isLoading)}
           <About />
           <Footer />
         </Route>
-        <Route path="/saved-news">
-          <SavedNews articles={articles} />
-        </Route>
+        <ProtectedRoute
+          exact
+          path="/saved-news"
+          loggedIn={loggedIn}
+          component={SavedNews}
+          articles={articles}
+        />
       </Switch>
 
       <PopupAuth
@@ -164,6 +201,7 @@ function App() {
         onClose={closeAllPopups}
         onRegisterClick={handleRegisterClick}
         handleLogin={handleLogin}
+        tokenCheck={tokenCheck}
       />
       <PopupRegister
         isOpen={isPopupRegisterOpen}
@@ -176,7 +214,8 @@ function App() {
         onClose={closeAllPopups}
         onAuthClick={handleAuthClick}
       />
-    </div>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

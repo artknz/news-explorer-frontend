@@ -19,7 +19,7 @@ class mainApi {
       method: 'GET',
       headers: {
         ...this.headers,
-        'Authorization': `Bearer ${jwt}`
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
       }
     })
     .then(this._statusResponse);
@@ -30,7 +30,7 @@ class mainApi {
       method: 'POST',
       headers: {
         ...this.headers,
-        'Authorization': `Bearer ${jwt}`
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
       },
       body: JSON.stringify({ keyword, title, text, date, source, link, image })
     })
@@ -42,9 +42,20 @@ class mainApi {
       method: 'DELETE',
       headers: {
         ...this.headers,
-        'Authorization': `Bearer ${jwt}`
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
       },
     })
+  }
+
+  getUserInfo() {
+    return fetch(`${this.baseUrl}/users/me`, {
+      method: 'GET',
+      headers: {
+        ...this.headers,
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+    .then(this._statusResponse);
   }
 }
 
