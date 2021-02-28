@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import './SearchForm.css';
 import Header from '../Header/Header';
 
-export default function SearchForm({ onAuthClick, searchArticles, userData, loggedIn }) {
+export default function SearchForm({ onAuthClick, searchArticles, userData, loggedIn, handleLogout }) {
   const input = useRef(null);
 
   function handleSubmit(e) {
@@ -16,6 +16,7 @@ export default function SearchForm({ onAuthClick, searchArticles, userData, logg
         onAuthClick={onAuthClick}
         userData={userData}
         loggedIn={loggedIn}
+        handleLogout={handleLogout}
       />
       <div className="search-form__container">
         <h1 className="search-form__title">Что творится в мире?</h1>

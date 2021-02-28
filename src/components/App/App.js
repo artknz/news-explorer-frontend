@@ -31,8 +31,11 @@ function App() {
   const[ userData, setUserData ] = useState({
     name: ''
   });
-
   const history = useHistory();
+
+  useEffect(_ => {
+    tokenCheck()
+  }, [])
 
   function handleAuthClick() {
     setIsPopupAuthOpen(true);
@@ -65,28 +68,30 @@ function App() {
     if (cards.length === 0) {
       return <NotFound />
     }
-    return <Main cards={cards} saveCard={_ => {
-      mainApi.addNewCard({
-        keyword: article.title,
-        title: article.title,
-        text: article.description,
-        date: article.publishedAt,
-        source: article.source.name,
-        link: article.url,
-        image: article.urlToImage
-      })
-      .then(res => {
-        console.log(res)
-        // const newCards = cards.map(card => {
-        //   if (card.url === res.link) {
-        //     card._id = res._id;
-        //   }
-        //   return card
-        // })
-        // setCards(newCards)
-      })
-      .catch((err) => console.log(err))
-    }} />
+    return <Main cards={cards}
+    saveCard={(article) => {
+      mainApi.addNewCard(article)
+        .then(res => {
+          const newCards = cards.map(card => {
+            if (card.url === res.data.link) {
+              card._id = res.data._id;
+            }
+            setArticles([res.data, ...articles]);
+            return card
+          })
+          setCards(newCards)
+        })
+        .catch((err) => console.log(err))
+      }}
+    deleteCard={(id) => {
+      mainApi.deleteArticle(id)
+        .then(() => {
+          const newArticles = articles.filter(article => article._id !== id)
+          setArticles(newArticles);
+        })
+        .catch((err) => console.log(err))
+      }}
+    />
   }
 
   function searchArticles(keyword) {
@@ -148,9 +153,9 @@ function App() {
   const handleLogin = (email, password) => {
     auth.authorize(email, password)
     .then(data => {
-      console.log(data.token)
       localStorage.setItem('jwt', data.token)
       setLoggedIn(true);
+      localStorage.removeItem('localCards');
       history.push('/');
     })
     .then(res => {
@@ -172,6 +177,12 @@ function App() {
     }
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('localCards');
+    setLoggedIn(false);
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -182,6 +193,7 @@ function App() {
             searchArticles={searchArticles}
             userData={userData}
             loggedIn={loggedIn}
+            handleLogout={handleLogout}
           />
           {defineContent(cards, isLoading)}
           <About />
@@ -193,6 +205,9 @@ function App() {
           loggedIn={loggedIn}
           component={SavedNews}
           articles={articles}
+          userData={userData}
+          loggedIn={loggedIn}
+          handleLogout={handleLogout}
         />
       </Switch>
 
@@ -201,7 +216,6 @@ function App() {
         onClose={closeAllPopups}
         onRegisterClick={handleRegisterClick}
         handleLogin={handleLogin}
-        tokenCheck={tokenCheck}
       />
       <PopupRegister
         isOpen={isPopupRegisterOpen}

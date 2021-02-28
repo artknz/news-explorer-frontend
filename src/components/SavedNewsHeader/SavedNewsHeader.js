@@ -4,9 +4,8 @@ import Navigation from '../Navigation/Navigation';
 import './SavedNewsHeader.css';
 import { Link } from 'react-router-dom';
 import HumburgerMenu from '../HumburgerMenu/HumburgerMenu';
-// import Header from '../Header/Header';
 
-export default function SavedNewsHeader() {
+export default function SavedNewsHeader({ userData, loggedIn, handleLogout }) {
   return (
     <header className="header header_saved-news">
       <div className="header__container header__container_saved-news">
@@ -14,6 +13,9 @@ export default function SavedNewsHeader() {
         <HumburgerMenu />
         <Navigation
           name='saved-news'
+          userData={userData}
+          loggedIn={loggedIn}
+          handleLogout={handleLogout}
         />
       </div>
     </header>

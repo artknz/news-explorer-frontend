@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation }  from 'react-router-dom';
 import './NewsCard.css';
 
-export default function NewsCard({ urlToImage, channelName, title, text, date, onSave }) {
-  const [ marked, setMarked ] = useState(false);
+export default function NewsCard({ urlToImage, channelName, title, text, date, onSave, id, onDelete }) {
+  const location = useLocation();
+
+  function handleButton() {
+    if (location.pathname === '/saved-news') {
+      return <button onClick={onDelete} type="button" className={'news-card__delete'} />
+    }
+    return <button onClick={onSave} type="button" className={id ? `news-card__save_active` : `news-card__save`} />
+  }
 
   const newDate = new Date(date);
   const options = {
@@ -16,7 +24,7 @@ export default function NewsCard({ urlToImage, channelName, title, text, date, o
     <>
       <div className="news-card">
         <img src={urlToImage} alt={channelName} className="news-card__image" />
-        <button onClick={onSave} type="button" className={marked ? `news-card__save news-card__save_active` : `news-card__save`} />
+        {handleButton()}
         <div className="news-card__publication-date">{formatted}</div>
         <h3 className="news-card__title">{title}</h3>
         <p className="news-card__text">{text}</p>

@@ -4,7 +4,7 @@ import Navigation from '../Navigation/Navigation';
 import HumburgerMenu from '../HumburgerMenu/HumburgerMenu';
 import { Route, Link } from 'react-router-dom';
 
-export default function Header({name, onAuthClick, userData, loggedIn}) {
+export default function Header({name, onAuthClick, userData, loggedIn, handleLogout}) {
   return (
     <header className="header">
       <div className="header__container">
@@ -15,6 +15,7 @@ export default function Header({name, onAuthClick, userData, loggedIn}) {
           onAuthClick={onAuthClick}
           userData={userData}
           loggedIn={loggedIn}
+          handleLogout={handleLogout}
         />
         <HumburgerMenu />
       </div>
