@@ -79,6 +79,7 @@ function App() {
             setArticles([res.data, ...articles]);
             return card
           })
+          console.log(newCards)
           setCards(newCards)
         })
         .catch((err) => console.log(err))
@@ -86,12 +87,27 @@ function App() {
     deleteCard={(id) => {
       mainApi.deleteArticle(id)
         .then(() => {
-          const newArticles = articles.filter(article => article._id !== id)
-          setArticles(newArticles);
+          const newCards = cards.filter(card => {
+            if (card._id) {
+              delete card._id
+            }
+            return card
+          })
+          setCards(newCards);
         })
         .catch((err) => console.log(err))
       }}
     />
+  }
+
+  function deleteCard(id) {
+    mainApi.deleteArticle(id)
+    .then(() => {
+      console.log(articles)
+      const newArticles = articles.filter(article => article._id !== id)
+      setArticles(newArticles);
+    })
+    .catch((err) => console.log(err))
   }
 
   function searchArticles(keyword) {
@@ -208,6 +224,7 @@ function App() {
           userData={userData}
           loggedIn={loggedIn}
           handleLogout={handleLogout}
+          deleteCard={deleteCard}
         />
       </Switch>
 

@@ -24,6 +24,6 @@ class newsApi {
 };
 
 export default new newsApi({
-  baseUrl: url,
+  baseUrl: urlProxy,
   apiKey
 });

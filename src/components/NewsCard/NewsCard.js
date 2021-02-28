@@ -9,7 +9,7 @@ export default function NewsCard({ urlToImage, channelName, title, text, date, o
     if (location.pathname === '/saved-news') {
       return <button onClick={onDelete} type="button" className={'news-card__delete'} />
     }
-    return <button onClick={onSave} type="button" className={id ? `news-card__save_active` : `news-card__save`} />
+    return <button onClick={id ? onDelete : onSave} type="button" className={id ? `news-card__save_active` : `news-card__save`} />
   }
 
   const newDate = new Date(date);

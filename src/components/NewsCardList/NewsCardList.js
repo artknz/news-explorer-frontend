@@ -22,9 +22,7 @@ export default function NewsCardList({ cards, saveCard, deleteCard }) {
           link: article.url,
           image: article.urlToImage
         })}
-        onDelete={_ => deleteCard({
-          id: article._id,
-        })}
+        onDelete={_ => deleteCard(article._id)}
         id={article._id} key={article.url} channelName={article.source.name} title={article.title} text={article.description} urlToImage={article.urlToImage} date={article.publishedAt} />)}</section>
       <button type="button" onClick={handleMoreButton} className="news-list__submit-button">Показать еще</button>
     </div>
