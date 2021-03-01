@@ -1,6 +1,3 @@
-// const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDBlZjAxNTFjMzMyNDQzZjk4NDhlODEiLCJpYXQiOjE2MTQyODg2MzYsImV4cCI6MTYxNDg5MzQzNn0._-K_n3jy306oMILF1lL-XPU11MdAgqrNszGrocvCuBQ';
-// const url = 'http://localhost:3000';
-
 class mainApi {
   constructor({ baseUrl, headers }) {
     this.baseUrl = baseUrl;
@@ -60,7 +57,7 @@ class mainApi {
 }
 
 export default new mainApi({
-  baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:3000'}`,
+  baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL || '//api.artknz1.students.nomoreparties.xyz'}`,
   headers: {
     'Content-Type': 'application/json',
   }
