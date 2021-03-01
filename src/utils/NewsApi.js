@@ -1,9 +1,10 @@
-import moment from 'moment';
 const url = 'http://newsapi.org/v2';
 const urlProxy = 'https://nomoreparties.co/news/v2';
 const apiKey = '917264a7877b42beb56d5d28951f459d';
-const nowDate = moment().format('YYYY-MM-DD');
-const beforeDate = moment().subtract(7, 'days').format('YYYY-MM-DD');
+const date = new Date();
+const nowDate = new Date().toISOString().slice(0, 10);
+date.setDate(date.getDate() - 7);
+const beforeDate = date.toISOString().slice(0, 10);
 
 class newsApi {
   constructor ({ baseUrl, apiKey, nowDate, beforeDate}) {
