@@ -27,7 +27,6 @@ function App() {
   const[currentUser, setCurrentUser] = useState(CurrentUserContext);
 
   const[ articles, setArticles] = useState([]);
-  console.log(articles)
   const[ loggedIn, setLoggedIn ] = useState(false);
   const[ userData, setUserData ] = useState({
     name: ''
@@ -104,7 +103,6 @@ function App() {
   function deleteCard(id) {
     mainApi.deleteArticle(id)
     .then(() => {
-      console.log(articles)
       const newArticles = articles.filter(article => article._id !== id)
       setArticles(newArticles);
     })
