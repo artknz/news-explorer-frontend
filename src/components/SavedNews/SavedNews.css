@@ -51,9 +51,31 @@
   padding-bottom: 62px;
 }
 
+@media screen and (max-width: 1240px) {
+  .saved-articles {
+    grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+    grid-gap: 8px;
+    margin: 32px auto 0;
+    max-width: 690px;
+    width: 100%;
+  }
+
+  .saved-news__text {
+    max-width: 900px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .saved-news__text {
     max-width: 690px;
+  }
+
+  .saved-articles {
+    grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+    grid-gap: 10px;
+    margin: 24px auto 0;
+    max-width: 288px;
+    width: 100%;
   }
 }
 

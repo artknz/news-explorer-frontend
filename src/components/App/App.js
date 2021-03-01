@@ -26,7 +26,8 @@ function App() {
   const[ cards, setCards ] = useState(localCards);
   const[currentUser, setCurrentUser] = useState(CurrentUserContext);
 
-  const[ articles, setArticles] = useState(null);
+  const[ articles, setArticles] = useState([]);
+  console.log(articles)
   const[ loggedIn, setLoggedIn ] = useState(false);
   const[ userData, setUserData ] = useState({
     name: ''
@@ -124,11 +125,21 @@ function App() {
       })
   }
 
+  const keywords = articles.reduce((sum, item) => {
+    if (!sum[item.keyword]) {
+      sum[item.keyword] = 1
+      return sum
+    }
+    sum[item.keyword] = sum[item.keyword] + 1
+    return sum
+  }, {})
+
   useEffect(_ => {
     if(loggedIn) {
       function getArticles() {
         mainApi.getArticles().then(
           (data) => {
+            // const newArticles = data.filter(article => article._id !== id)
             setArticles(data)
           })
       }
@@ -172,6 +183,7 @@ function App() {
       localStorage.setItem('jwt', data.token)
       setLoggedIn(true);
       localStorage.removeItem('localCards');
+      setArticles([])
       history.push('/');
     })
     .then(res => {
@@ -196,6 +208,7 @@ function App() {
   const handleLogout = () => {
     localStorage.removeItem('jwt');
     localStorage.removeItem('localCards');
+    setArticles([]);
     setLoggedIn(false);
   }
 
@@ -221,6 +234,7 @@ function App() {
           loggedIn={loggedIn}
           component={SavedNews}
           articles={articles}
+          keywords={keywords}
           userData={userData}
           loggedIn={loggedIn}
           handleLogout={handleLogout}

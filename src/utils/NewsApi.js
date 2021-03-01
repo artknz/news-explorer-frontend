@@ -1,15 +1,20 @@
+import moment from 'moment';
 const url = 'http://newsapi.org/v2';
 const urlProxy = 'https://nomoreparties.co/news/v2';
 const apiKey = '917264a7877b42beb56d5d28951f459d';
+const nowDate = moment().format('YYYY-MM-DD');
+const beforeDate = moment().subtract(7, 'days').format('YYYY-MM-DD');
 
 class newsApi {
-  constructor ({ baseUrl, apiKey }) {
+  constructor ({ baseUrl, apiKey, nowDate, beforeDate}) {
     this.baseUrl = baseUrl;
     this.apiKey = apiKey;
+    this.nowDate = nowDate;
+    this.beforeDate = beforeDate;
   }
 
   getArticles(keyword) {
-    return fetch(`${this.baseUrl}/everything?q=${keyword}&from=2021-02-20&to=2021-02-27&pageSize=100&apiKey=${this.apiKey}`,{ method: 'GET',
+    return fetch(`${this.baseUrl}/everything?q=${keyword}&from=${this.beforeDate}&to=${this.nowDate}&pageSize=100&apiKey=${this.apiKey}`,{ method: 'GET',
       headers: {
         ...this.headers,
       }
@@ -25,5 +30,7 @@ class newsApi {
 
 export default new newsApi({
   baseUrl: urlProxy,
-  apiKey
+  apiKey,
+  nowDate,
+  beforeDate
 });

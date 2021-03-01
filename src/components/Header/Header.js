@@ -17,7 +17,9 @@ export default function Header({name, onAuthClick, userData, loggedIn, handleLog
           loggedIn={loggedIn}
           handleLogout={handleLogout}
         />
-        <HumburgerMenu />
+        <HumburgerMenu
+          name={name}
+        />
       </div>
     </header>
   );
