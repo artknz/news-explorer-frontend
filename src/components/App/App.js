@@ -25,6 +25,7 @@ function App() {
   const localCards = JSON.parse(localStorage.getItem('localCards'));
   const[ cards, setCards ] = useState(localCards);
   const[currentUser, setCurrentUser] = useState(CurrentUserContext);
+  const [ keyword, setKeyword ] = useState(localStorage.getItem('keyword') || '')
 
   const[ articles, setArticles] = useState([]);
   const[ loggedIn, setLoggedIn ] = useState(false);
@@ -70,7 +71,7 @@ function App() {
     }
     return <Main cards={cards}
     saveCard={(article) => {
-      mainApi.addNewCard(article)
+      mainApi.addNewCard(article, keyword)
         .then(res => {
           const newCards = cards.map(card => {
             if (card.url === res.data.link) {
@@ -79,7 +80,6 @@ function App() {
             setArticles([res.data, ...articles]);
             return card
           })
-          console.log(newCards)
           setCards(newCards)
         })
         .catch((err) => console.log(err))
@@ -116,6 +116,9 @@ function App() {
         const localCards = JSON.stringify(res.articles)
         localStorage.setItem('localCards', localCards)
         setCards(res.articles);
+        const keywordUppercased = keyword[0].toUpperCase() + keyword.slice(1)
+        localStorage.setItem('keyword', keywordUppercased)
+        setKeyword(keywordUppercased)
       })
       .catch((err) => console.log(err))
       .finally(_ => {
@@ -137,7 +140,6 @@ function App() {
       function getArticles() {
         mainApi.getArticles().then(
           (data) => {
-            // const newArticles = data.filter(article => article._id !== id)
             setArticles(data)
           })
       }

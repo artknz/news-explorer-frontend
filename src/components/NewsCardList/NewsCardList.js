@@ -14,7 +14,6 @@ export default function NewsCardList({ cards, saveCard, deleteCard }) {
       <p className="news-list__title">Результаты поиска</p>
       <section className="news-list__cards">{cards.slice(0, count).map(article => <NewsCard
         onSave={_ => saveCard({
-          keyword: article.title,
           title: article.title,
           text: article.description,
           date: article.publishedAt,

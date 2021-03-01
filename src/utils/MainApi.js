@@ -22,7 +22,7 @@ class mainApi {
     .then(this._statusResponse);
   }
 
-  addNewCard({ keyword, title, text, date, source, link, image }) {
+  addNewCard({ title, text, date, source, link, image }, keyword) {
     return fetch(`${this.baseUrl}/articles`, {
       method: 'POST',
       headers: {

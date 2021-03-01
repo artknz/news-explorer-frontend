@@ -103,6 +103,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  text-transform: capitalize;
 }
 
 .news-card__delete:hover {
