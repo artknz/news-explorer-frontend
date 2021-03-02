@@ -6,11 +6,12 @@ import NewsCard from "../NewsCard/NewsCard";
 
 export default function SavedNews({ articles, userData, loggedIn, handleLogout, deleteCard, keywords }) {
   const sortKeys = Object.keys(keywords).sort(function(a,b){return keywords[b] - keywords[a]});
+  console.log(keywords)
 
   function renderKeywords () {
     if (sortKeys.length < 1 ) { return '0' }
-    if (sortKeys.length === 1) { sortKeys[0] }
-    if (sortKeys.length === 2) { `${sortKeys[0]}, ${sortKeys[1]}` }
+    if (sortKeys.length === 1) { return sortKeys[0] }
+    if (sortKeys.length === 2) { return `${sortKeys[0]}, ${sortKeys[1]}` }
     return `${sortKeys[0]}, ${sortKeys[1]} и ${sortKeys.length - 2}-м другим словам`
   }
 
