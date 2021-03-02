@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import './PopupRegister.css';
 
-export default function PopupRegister({name, isOpen, onClose}) {
+export default function PopupRegister({ isOpen, onClose, handleRegister, onAuthClick }) {
+  const [ data, setData ] = useState({
+    email: '',
+    password: '',
+    name: ''
+  })
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setData({
+      ...data,
+      [name]: value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password, name } = data;
+    handleRegister(email, password, name)
+  }
+
   return(
     <PopupWithForm
       name='register'
@@ -11,18 +31,20 @@ export default function PopupRegister({name, isOpen, onClose}) {
       linkText='Войти'
       onClose={onClose}
       isOpen={isOpen}
+      onSubmit={handleSubmit}
+      onAuthClick={onAuthClick}
     >
       <h4 className="popup__field-name">Email</h4>
-      <input id="title-input" type="text" value={name} onChange={''} placeholder="Введите почту" name="name" minLength="1" maxLength="30" className="popup__field popup__field_type_title" required />
-      <span id="title-input-error" className="popup__field-error" />
+      <input id="registeremail" required name="email" placeholder="Введите почту" type="text" value={data.registeremail} onChange={handleChange} className="popup__field popup__field_type_title" />
+      {/* <span id="title-input-error" className="popup__field-error" /> */}
 
       <h4 className="popup__field-name">Пароль</h4>
-      <input id="link-input" type="url" value={''} onChange={''} placeholder="Введите пароль" name="link" className="popup__field popup__field_type_link" required />
-      <span id="link-input-error" className="popup__field-error" />
+      <input id="registerpassword" required name="password" type="password" value={data.registerpassword} onChange={handleChange} placeholder="Введите пароль" className="popup__field popup__field_type_link"  />
+      {/* <span id="link-input-error" className="popup__field-error" /> */}
 
       <h4 className="popup__field-name">Имя</h4>
-      <input id="name-input" type="url" value={''} onChange={''} placeholder="Введите свое имя" name="link" className="popup__field popup__field_type_link" required />
-      <span id="name-input-error" className="popup__field-error" />
+      <input id="registername" required name="name" type="text" value={data.name} onChange={handleChange} placeholder="Введите свое имя" className="popup__field popup__field_type_link" />
+      {/* <span id="name-input-error" className="popup__field-error" /> */}
     </PopupWithForm>
   );
 };

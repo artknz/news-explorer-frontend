@@ -23,6 +23,10 @@
     z-index: 1;
   }
 
+  .menu__btn_saved-news {
+    color: black;
+  }
+
 
   .menu__btn > span,
   .menu__btn > span::before,
@@ -40,6 +44,21 @@
   .menu__btn > span::after {
     content: '';
     top: 8px;
+  }
+
+  .hamburger-menu__title {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 27px;
+    left: 17px;
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    text-decoration: none;
   }
 
   .menu__box {

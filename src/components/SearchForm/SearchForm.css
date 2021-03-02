@@ -43,8 +43,7 @@
   width:100%;
   max-height: 64px;
   background: #FFFFFF;
-  border: 1px solid #D1D2D6;
-  box-sizing: border-box;
+  box-sizing: content-box;
   border-radius: 100px;
   margin-top: 64px;
 }
@@ -55,13 +54,12 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 22px;
-  color: #B6BCBF;
   margin-left: 24px;
   border: none;
   max-width: 376px;
   width: 100%;
-  box-sizing: border-box;
-  margin-right: 38px;
+  box-sizing: content-box;
+  margin-right: 36px;
   outline: none;
 }
 
@@ -81,6 +79,8 @@
   color: #FFFFFF;
   box-sizing: border-box;
   outline: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .search-form__submit-button:hover {

@@ -13,6 +13,10 @@
 .news-card__image {
   max-width: 400px;
   min-height: 272px;
+  max-height: 272px;
+  background-position: center center;
+  object-fit: cover;
+  width: 100%;
 }
 
 .news-card_flag {
@@ -44,10 +48,66 @@
   right: 24px;
   border-radius: 8px;
   cursor: pointer;
+  outline: none;
 }
 
 .news-card__save:hover {
   background-image: url(../../images/Group_14.png);
+}
+
+.news-card__save_active {
+  background-image: url(../../images/Group_12.png);
+  min-width: 40px;
+  min-height: 40px;
+  border: none;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+.news-card__delete {
+  background-image: url(../../images/Group_delete.png);
+  min-width: 40px;
+  min-height: 40px;
+  border: none;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+.news-card__keyword {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  border-radius: 8px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 10px;
+  max-height: 40px;
+  max-width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-transform: capitalize;
+}
+
+.news-card__delete:hover {
+  background-image: url(../../images/Group_delete_hover.png);
 }
 
 .news-card__publication-date {
@@ -70,6 +130,7 @@
   font-weight: normal;
   font-size: 26px;
   line-height: 30px;
+  min-height: 60px;
   color: #1A1B22;
   margin-left: 24px;
   margin-top: 12px;
@@ -86,6 +147,7 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 22px;
+  min-height: 88px;
   color: #1A1B22;
   margin: 16px 24px 0;
   display: -webkit-box;
